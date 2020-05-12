@@ -18,9 +18,7 @@ interface AuthContextData {
   // token?: string;
 }
 
-export const AuthContext = createContext<AuthContextData>(
-  {} as AuthContextData,
-);
+const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
@@ -54,7 +52,7 @@ export const AuthProvider: React.FC = ({ children }) => {
   );
 };
 
-function useAuth(): AuthContextData {
+export function useAuth(): AuthContextData {
   const context = useContext(AuthContext);
 
   if (!context) {
