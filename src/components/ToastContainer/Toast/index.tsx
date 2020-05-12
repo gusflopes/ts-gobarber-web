@@ -10,6 +10,7 @@ import { ToastMessage, useToast } from '../../../hooks/toast';
 
 interface ToastProps {
   message: ToastMessage;
+  style: object;
 }
 
 const icons = {
@@ -18,7 +19,7 @@ const icons = {
   success: <FiCheckCircle size={24} />,
 };
 
-export const Toast: React.FC<ToastProps> = ({ message }) => {
+export const Toast: React.FC<ToastProps> = ({ message, style }) => {
   const { removeToast } = useToast();
 
   // O return é executado quando o componente deixa de existir.
@@ -37,6 +38,7 @@ export const Toast: React.FC<ToastProps> = ({ message }) => {
       key={message.id}
       type={message.type}
       hasDescription={!!message.description}
+      style={style}
     >
       {icons[message.type || 'info']}
 
